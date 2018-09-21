@@ -21,3 +21,16 @@ loading of ontologies files (a) in topOnto and
 
 ## network clusting 
 * [graph-tool](https://graph-tool.skewed.de/)
+
+## Page rank
+* (wiki)[https://en.wikipedia.org/wiki/PageRank]
+
+
+---
+
+* Colin has python code to export/import obo file to/from the server. NRG is running a neo4j server. (account created:xin)
+* Colin: C++ code to contruct a network/vetice/edge object. 
+* Colin: C++ hypergeometric test for enrichment test. Accept the two comparing gene list as input.
+* R code for entrypy calculation on igraph network. Example in PPI network. Code is currently workong with undirect graph, needs to be implement to work with directional graph.
+
+
