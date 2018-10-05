@@ -34,3 +34,45 @@ loading of ontologies files (a) in topOnto and
 * R code for entrypy calculation on igraph network. Example in PPI network. Code is currently workong with undirect graph, needs to be implement to work with directional graph.
 
 
+
+# NRG server ip:
+129.215.164.31
+
+
+
+
+
+
+
+
+---
+
+## Neo4j 
+* Graph structure:
+
+Nodes, Edges, Graph...[neo4j.jar](https://neo4j.com/docs/java-reference/current/javadocs/overview-summary.html)
+
+* Communication with server 
+
+driver
+
+
+## Loading ontology into python/java
+Owl 
+### Java api:
+https://github.com/owlcs/owlapi/
+* An API for OWL 2 and an in-memory reference implementation
+* RDF/XML parser and writer
+* OWL/XML parser and writer
+* OWL Functional Syntax parser and writer
+* Turtle parser and writer
+* KRSS parser
+* OBO format parser
+* Reasoner interfaces for working with reasoners such as FaCT++, HermiT, Pellet, Racer, JFact and Chainsaw.* 
+
+
+### python api: 
+* rdflib
+
+
+
