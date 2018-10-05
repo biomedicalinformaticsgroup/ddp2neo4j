@@ -35,7 +35,7 @@ loading of ontologies files (a) in topOnto and
 
 
 
-# NRG server ip:
+## NRG server ip:
 129.215.164.31
 
 
@@ -46,6 +46,13 @@ loading of ontologies files (a) in topOnto and
 
 
 ---
+
+# Meeting note 5th Oct 2018
+
+![image](https://user-images.githubusercontent.com/3407502/46533664-59fd6700-c89d-11e8-95bd-98b086a14211.png)
+![image](https://user-images.githubusercontent.com/3407502/46533666-5bc72a80-c89d-11e8-99ff-b56e7ebb07bc.png)
+![image](https://user-images.githubusercontent.com/3407502/46533748-a5b01080-c89d-11e8-8bf1-6a0464e3ea36.png)
+
 
 ## Neo4j 
 * Graph structure:
@@ -73,6 +80,16 @@ https://github.com/owlcs/owlapi/
 
 ### python api: 
 * rdflib
+
+
+
+
+
+
+
+
+
+
 
 
 
