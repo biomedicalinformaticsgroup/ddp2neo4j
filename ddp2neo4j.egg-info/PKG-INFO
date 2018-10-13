@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: ddp2neo4j
+Version: 1
+Summary: Loading Patient, genetic and Ontology data related to Developmental Disorders
+Home-page: http://github.com//statbio
+Author: Colin Mclean
+Author-email: Colin.D.Mclean@ed.ac.uk
+License: MIT
+Description: UNKNOWN
+Platform: UNKNOWN
