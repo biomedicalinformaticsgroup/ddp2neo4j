@@ -12,8 +12,9 @@ hpo.print_graph_stat()
 node = hpo.get_node('HP:0007759')
 print(node)
 
-
-config.DATABASE_URL = 'bolt://neo4j:network@129.215.164.31:443'
+username='neo4j'
+password=''
+config.DATABASE_URL = 'bolt://{}:{}@129.215.164.31:443'.format(username,password)
 
 e_node = OntologyNode(term_id='HP:0007759',term_name=node['name']).save()
 e_node = OntologyNode(term_id='HP:0007759',term_name=node['name']).save()
