@@ -85,6 +85,7 @@ https://github.com/owlcs/owlapi/
 
 
 
+git update-index --assume-unchanged ddp2neo4j/settings.py
 
 
 
