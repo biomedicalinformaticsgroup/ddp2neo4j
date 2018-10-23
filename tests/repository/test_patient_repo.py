@@ -3,15 +3,15 @@ from ddp2neo4j.repository.patient_repo import PatientReposity
 from ddp2neo4j.core.parser import PatientParser
 
 def test_create_nodes():
-    patient_records = PatientParser.parse_file(Patient_Resource.file_dev)
-    PatientReposity.create_nodes_from_patient_records(patient_records)
+    patient_records = PatientParser.parse_file(Patient_Resource.file_dev,True)
+    PatientReposity.batch_create_from_dict(patient_records,batch_size=1)
 
     nodes={}
-    for n in HPOReposity.allNode():
+    for n in PatientReposity.allNode():
         assert n.id
-        nodes[n.term_id]=n
+        nodes[n.primary_id]=n
 
-    assert len(nodes) == 4
+    assert len(nodes) == 2
 
 
 

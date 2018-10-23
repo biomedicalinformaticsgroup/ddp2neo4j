@@ -1,4 +1,4 @@
-from neomodel import (StringProperty, DateTimeProperty, ArrayProperty, BooleanProperty, RelationshipTo)
+from neomodel import (StringProperty, ArrayProperty, BooleanProperty, RelationshipTo)
 
 from ddp2neo4j.entities.base import BaseEdge, BaseNode
 
@@ -7,9 +7,8 @@ class HPOEdge(BaseEdge):
     pass
 
 
-
 class HPONode(BaseNode):
-    term_id = StringProperty(unique_index=True, required=True)
+    primary_id = StringProperty(unique_index=True, required=True)
     name = StringProperty(index=True, required=True)
     definition = StringProperty()
     comment = StringProperty()
@@ -27,8 +26,6 @@ class HPONode(BaseNode):
     is_anonymous = BooleanProperty(index=True)
     is_obsolete = BooleanProperty(index=True)
 
-
     is_child_of = RelationshipTo('HPONode', 'IS_A', model=HPOEdge)
 
     # is_parent_of = RelationshipFrom('HPONode', 'IS_PARENT_OF', model=HPOEdge)
-

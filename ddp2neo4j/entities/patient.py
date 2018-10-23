@@ -8,7 +8,7 @@ class Patient_HPO_Edge(BaseEdge):
 
 
 class PatientNode(BaseNode):
-    patient_id = StringProperty(unique_index=True, required=True)
+    primary_id = StringProperty(unique_index=True, required=True)
 
     genes = ArrayProperty(StringProperty())  # should this be a relationship?
     hpos = ArrayProperty(StringProperty())
