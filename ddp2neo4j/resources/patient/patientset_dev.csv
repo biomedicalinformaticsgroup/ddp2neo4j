@@ -1,0 +1,3 @@
+PatientID,Genes,HP terms
+P1,2,HP:0000005;HP:0000007
+P2,3;1,HP:0000006

@@ -20,7 +20,8 @@ setup(
         'obonet',
         'networkx',
         'numpy',
-        'neomodel'
+        'neomodel',
+        'pytest'
     ],
     include_package_data=True,
     test_suite='nose.collector',
