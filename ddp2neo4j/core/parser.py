@@ -60,3 +60,5 @@ class PatientParser(Parser):
     @classmethod
     def parse_url(cls, url):
         raise NotImplementedError('Not Implemented')
+
+

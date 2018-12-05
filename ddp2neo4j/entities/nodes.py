@@ -1,10 +1,8 @@
-from neomodel import (StringProperty, ArrayProperty, BooleanProperty, RelationshipTo)
+from neomodel import (StringProperty, ArrayProperty, BooleanProperty, RelationshipTo, RelationshipFrom,Relationship)
 
-from ddp2neo4j.entities.base import BaseEdge, BaseNode
+from ddp2neo4j.entities.base import  BaseNode
+from ddp2neo4j.entities.edges import HPOEdge,Patient_HPO_Edge
 
-
-class HPOEdge(BaseEdge):
-    pass
 
 
 class HPONode(BaseNode):
@@ -27,5 +25,17 @@ class HPONode(BaseNode):
     is_obsolete = BooleanProperty(index=True)
 
     is_child_of = RelationshipTo('HPONode', 'IS_A', model=HPOEdge)
+    is_parent_of = RelationshipFrom('HPONode', 'IS_A', model=HPOEdge)
+    # affect = RelationshipFrom('PatientNode', 'HAS_PHENOTYPES', model=Patient_HPO_Edge)
+    affect = Relationship('PatientNode', 'HAS_PHENOTYPES', model=Patient_HPO_Edge)
 
-    # is_parent_of = RelationshipFrom('HPONode', 'IS_PARENT_OF', model=HPOEdge)
+
+
+class PatientNode(BaseNode):
+    primary_id = StringProperty(unique_index=True, required=True)
+
+    genes = ArrayProperty(StringProperty())  # should this be a relationship?
+    hpos = ArrayProperty(StringProperty())
+
+    has_phenotypes = Relationship('HPONode', 'HAS_PHENOTYPES', model=Patient_HPO_Edge)
+

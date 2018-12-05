@@ -1,6 +1,8 @@
 from neomodel import UniqueProperty
 from neomodel import config
 from neomodel import db
+from neomodel import Traversal
+from neomodel.match import EITHER
 
 import math
 
@@ -81,11 +83,11 @@ class Repository(object):
 
 
     @classmethod
-    def allNode(cls, ):
+    def allNode(cls):
         """
         query all nodes with label cls.NodeEntity
         :param cls:
-        :return:
+        :return: NodeEntity
         """
         return cls.NodeEntity.nodes
 
@@ -120,3 +122,33 @@ class Repository(object):
         except UniqueProperty:
             print('UniqueProperty error!')
             raise UniqueProperty
+
+    @classmethod
+    def query_relations(cls,source,target_cls,direction=EITHER,relation_type=None,model=None):
+        definition = dict(node_class=target_cls, direction=direction, relation_type=relation_type, model=model)
+        relations_traversal = Traversal(source, source.__label__, definition)
+        return relations_traversal.all()
+
+
+    @classmethod
+    def toNextworkX(cls):
+        import networkx as nx
+        G = nx.Graph()
+        processed = []
+        for node in cls.allNode():
+            cls._create_nx_node(G, node, processed)
+        return G
+
+    @classmethod
+    def _create_nx_node(cls, graph, node, processed):
+        processed.append(node.primary_id)
+        props = node.getProperties()
+        rels = node.getRelations()
+
+        for rel_name, connected_nodes in rels.items():
+            for connected_node in connected_nodes:
+                if connected_node.primary_id not in processed:
+                    cls._create_nx_node(graph, connected_node, processed)
+
+        graph.add_node(props['primary_id'], **props)
+        graph.add_edges_from([(node.primary_id, target.primary_id) for target in connected_nodes])

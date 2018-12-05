@@ -12,5 +12,5 @@ class HPO_Resource(resources):
 
 
 class Patient_Resource(resources):
-    file = resource_filename('ddp2neo4j.resources.patient', 'patirntset.csv')
+    file = resource_filename('ddp2neo4j.resources.patient', 'patientset.csv')
     file_dev = resource_filename('ddp2neo4j.resources.patient', 'patientset_dev.csv')

@@ -4,6 +4,12 @@ from neomodel import (StructuredNode, DateTimeProperty, StructuredRel)
 class BaseEdge(StructuredRel):
     created = DateTimeProperty(default_now=True)
 
+    def getProperties(self):
+        dict = {}
+        props = self.defined_properties(aliases=False, rels=False)
+        for prop in props:
+            dict[prop] = getattr(self, prop)
+        return dict
 
 class BaseNode(StructuredNode):
     neo4j_node_created_date = DateTimeProperty(default_now=True)
@@ -31,3 +37,24 @@ class BaseNode(StructuredNode):
         snode = cls(**props)
 
         return snode
+
+    def getProperties(self):
+        dict = {}
+        props = self.defined_properties(aliases=False, rels=False)
+        for prop in props:
+            dict[prop] = getattr(self, prop)
+        return dict
+
+    def getRelations(self, deep=True):
+        dict = {}
+        rels = self.defined_properties(aliases=False, properties=False)
+        for rel_name, rel in rels.items():
+            # print(float(getattr(rel.definition['model'],'weight')))
+            if (deep):
+                dict[rel_name] = [r for r in getattr(self, rel_name).all()]
+            else:
+                dict[rel_name] = [r.primary_id for r in getattr(self, rel_name).all()]
+        return dict
+
+
+

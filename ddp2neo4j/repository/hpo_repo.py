@@ -1,6 +1,6 @@
 from neomodel import UniqueProperty
 
-from ddp2neo4j.entities.hpo import HPONode, HPOEdge
+from ddp2neo4j.entities.nodes import HPONode, HPOEdge
 from ddp2neo4j.repository.node_repo import Repository
 
 
@@ -19,3 +19,8 @@ class HPOReposity(Repository):
         for id, node in nodes.items():
             for parent in node.is_a:
                 node.is_child_of.connect(nodes[parent])
+
+    @classmethod
+    def fetch_largest_connect_compounent(cls):
+        cls.NodeEntity.cypher("MATCH (a) WHERE id(a)={self} MATCH (a)-[:FRIEND]->(b) RETURN b")
+

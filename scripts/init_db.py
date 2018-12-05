@@ -10,3 +10,16 @@ HPOReposity.batch_create_from_dict(hpo_terms, batch_size=3)
 
 patient_records = PatientParser.parse_file(Patient_Resource.file_dev, True)
 PatientReposity.batch_create_from_dict(patient_records, batch_size=1)
+
+
+
+# import networkx as nx
+# G = nx.Graph()
+#
+#
+# nodes={}
+# for node in HPOReposity.allNode():
+#     nodes[node.primary_id] = node
+# # for node in HPOReposity.allNode():
+# #     nodes[node.primary_id] = node
+# print(nodes)
